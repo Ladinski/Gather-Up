@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/Home.css' %}">
+    <link rel="icon" href="{% static 'images/favicon-96x96.png' %}" sizes="96x96" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <!--navigation bar-->
+  <div class="container p-0">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+      <a class="navbar-brand" href="/">
+        <img src="{% static 'images/gatherUp_logo.png' %}" style="width:60px; border-radius: 30%;" alt="logo" >
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+ <input type="text" id="searchInput" class="form-control" placeholder="🔎︎ Search events..." style="background-color: #222222; color: #ffffff; border: none" />
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="/" style="color: #f8eded;">Home</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="/events">Events</a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link" href="/upload">Upload</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <!--content of the page-->
+  <div class="content-container">
+    <div class="contentDiv">
+    <h4 class="header">Katsushika Hokusai</h4>
+   <p>Katsushika Hokusai (葛飾 北斎, 31 October 1760 – 10 May 1849), known simply as Hokusai, was a Japanese ukiyo-e artist of the Edo period, active as a painter and printmaker.
+    <br> He is best known for the woodblock print series Thirty-Six Views of Mount Fuji, which includes the iconic print The Great Wave off Kanagawa.
+    <br> Hokusai was instrumental in developing ukiyo-e from a style of portraiture largely focused on courtesans and actors into a much broader style of art that focused on landscapes, plants, and animals.
+    <br> His works are thought to have had a significant influence on Vincent van Gogh and Claude Monet during the wave of Japonisme that spread across Europe in the late 19th century.
+    </p>
+    <br> 
+</div>
+<div class="contentDiv">
+    <h4 class="header">Early Life</h4>  
+    <p>Hokusai's date of birth is unclear, but is often stated as the 23rd day of the 9th month of the 10th year of the Hōreki era to an artisan family.
+      <br> It is believed his father was Nakajima Ise, a mirror-maker for the shōgun.
+      <br> His father never made Hokusai an heir, so it is possible that his mother was a concubine.
+      <br> Hokusai began painting around the age of six, perhaps learning from his father, whose work included the painting of designs around mirrors
+    </p>
+    <br>
+</div>
+<div class="contentDiv">
+    <h4 class="header">Middle Period</h4>
+    <p>The next period saw Hokusai's association with the Tawaraya School and the adoption of the name "Tawaraya Sōri".
+      <br> He produced many privately commissioned prints for special occasions (surimono), and illustrations for books of humorous poems (kyōka ehon) during this time.
+      <br> In 1798, Hokusai passed his name on to a pupil and set out as an independent artist, free from ties to a school for the first time, adopting the name Hokusai Tomisa.
+    </p>
+    <br>
+</div>
+<div class="contentDiv">
+    <h4 class="header">Later Life</h4>
+    <p>The next period, beginning in 1834, saw Hokusai working under the name "Gakyō Rōjin" (画狂老人; "The Old Man Mad About Art").
+      <br> It was at this time that he produced One Hundred Views of Mount Fuji, another significant series, generally considered "the masterpiece among his landscape picture books".
+    </p>
+    <br>
+</div>
+<div class="contentDiv">
+    <h4 class="header">Influences on Art and Culture</h4>
+    <p>
+      Hokusai had achievements in various fields as an artist.
+      <br> He made designs for book illustrations and woodblock prints, sketches, and painting for over 70 years.
+      <br> Hokusai was an early experimenter with western linear perspective among Japanese artists.
+      <br> Hokusai himself was influenced by Sesshū Tōyō and other styles of Chinese painting.
+      <br> His influences stretched across the globe to his western contemporaries in nineteenth-century Europe with Japonism, which started with a craze for collecting Japanese art, particularly ukiyo-e.
+      <br> Some of the first samples were to be seen in Paris, when in about 1856, the French printmaker, designer and colleague of many Impressionsist artists such as Édouard Manet, Félix Bracquemond first came across a copy of a Hokusai sketchbook at the workshop of August Dalatre, his printer.
+    </p>
+     </div>
+  </div>
+
+<!--bottom navigator-->
+
+<nav class="bottom-nav sticky-bottom-nav justify-content-center">
+  <div class="container">
+    <ul class="pagination">
+      <li class="page-item disabled"><a class="page-link" href="/">Previous</a></li>
+      <li class="page-item disabled"><a class="page-link" href="/">1</a></li>
+      <li class="page-item"><a class="page-link" href="/events">2</a></li>
+      <li class="page-item"><a class="page-link" href="/upload">3</a></li>
+      <li class="page-item"><a class="page-link" href="/events">Next</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+  <!--footer for contact-->
+<div class="footer">
+<div style="width: 100%; padding: 10; margin: 0; text-align: center;" class="bg-dark text-white">
+  <ul class="nav justify-content-center d-flex justify-content-space-between">
+    <li class="nav-item" style="margin-right: 20px;">
+      <a class="nav-link" href="https://www.instagram.com/aco_smil?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><img src="{% static 'images/instagram.png' %}" alt="instagram"> </a>
+    </li>
+    <li class="nav-item" style="margin-right: 20px;">
+      <a class="nav-link" href="https://github.com/Ladinski/flute.git" target="_blank"><img src="{% static 'images/githubce1.png' %}" alt="pinterest"></a>
+    </li>
+    <li class="nav-item" style="margin-right: 20px;">
+      <a class="nav-link" href="https://www.facebook.com/" target="_blank"><img src="{% static 'images/facebook.png' %}" alt="facebook"></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="mailto:borjan.ladinski@gmail.com?subject=Information%20regarding%20Gather-Up%20application&body=Dear%20Gather-Up%20team," target="_blank"><img src="{% static 'images/mail.png' %}" alt="mail"></a>
+    </li>
+  </ul>
+</div>
+</div>
+<script>
+  $(document).ready(function() {
+    // On input in the search bar
+    $('#searchInput').on('input', function() {
+      var query = $(this).val().toLowerCase();  // Get the input text
+
+      // Loop through all divs with class 'contentDiv'
+      $('.contentDiv').each(function() {
+        var headerText = $(this).find('h4').text().toLowerCase();  // Get text of the header (h2)
+
+        // If the header text contains the search query, show the div; otherwise, hide it
+        if (headerText.includes(query)) {
+          $(this).show();  // Show div if header matches query
+        } else {
+          $(this).hide();  // Hide div if header doesn't match query
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
