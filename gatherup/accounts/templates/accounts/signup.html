@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Login.css' %}">
+    <title>Sign up</title>
+    
+</head>
+<body>
+    <div class="loginCard">
+        <h2 style="margin-bottom: 10px;">Sign Up</h2>
+
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required class = "input-field"><br>
+            <input type="email" name="email" placeholder="Email" required class = "input-field"><br>
+            <input type="password" name="password" placeholder="Password" required class = "input-field"><br>
+            <button type="submit" class="login-btn">Sign Up</button>
+            <a href="/accounts/login/" class="login-btn">Login</a></li>
+        </form>
+
+
+</div>
+</body>
+</html>

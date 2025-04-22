@@ -1,5 +1,6 @@
 import os
 from django.db import models
+from accounts.models import CustomUser 
 
 class Event(models.Model):
     EVENT_TYPES = (
@@ -35,7 +36,7 @@ class Event(models.Model):
     host_profile_name = models.CharField(max_length=30)
     likes = models.IntegerField(default=0)
     date_time = models.DateTimeField()  # New field for event date and time
-
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=1)
 
     def delete(self, *args, **kwargs):
         if self.image and os.path.isfile(self.image.path):
