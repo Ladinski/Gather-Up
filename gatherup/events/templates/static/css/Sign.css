@@ -50,11 +50,18 @@ body{
 }
 
 .input-field{
+
     margin-bottom: 5px; 
     padding: 8px;
     background-color: rgb(40, 43, 46);
-     border-radius: 5px;
-      border: none;
-      width: 45%;
-      
+    border-radius: 5px;
+    border: none;
+    width: 45%;
+     
 }
+
+
+input.input-field{
+    color: white !important;
+}
+
