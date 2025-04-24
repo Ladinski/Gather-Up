@@ -1,0 +1,154 @@
+body {
+    background-image: url("/static/images/smil4.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex; /* Flexbox layout to manage footer placement */
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+    margin: 0;
+}
+
+.content-container p:hover {
+background-color: rgba(21, 16, 52, 0.9);
+color: #f8eded;
+border-radius: 8px;
+}
+
+.navbar{
+  margin: 20px;
+  border-radius: 12px;
+}
+
+.content-container {
+    padding: 30px; 
+    margin-top: 100px;
+    color: #fff; 
+    transition: 0.3s;
+}
+.pic{
+  width: 30px !important;
+    border-radius: 50% !important;
+    margin-bottom: 15px !important;
+    margin-left: 20px !important; 
+    margin-top: 10px;
+    transition: 0.3s;
+}
+.pic:hover{
+  filter: brightness(65%);
+}
+.navbar-nav {
+  justify-content: center;
+  display: flex;
+}
+.nav-link {
+    padding: 10px 20px;
+    font-size: 18px; 
+    border-radius: 3px;
+    color: #fff; 
+    text-decoration: none;
+    margin-left: 20px; 
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    background-color: #444;
+    color: #fff; 
+}
+
+.nav-item {
+    display: inline-block;
+    text-align: center;
+}
+
+.sticky-bottom-nav {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.page-link{
+  color:#f8eded;
+  background-color: #444;
+  border: none;
+}
+
+.page-link:hover{
+  color:#f8eded;
+  background-color: #514b4b;
+  border: none;
+}
+
+.footer{
+margin-top:auto;
+}
+
+
+
+
+.uploadCard{
+  color: white;
+  justify-content: center;
+  align-items: center;
+  background: rgba(33, 32, 32, 0.9); /* optional: adds a dark transparent background */
+  padding: 40px 0px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  width: 350px;
+  margin: auto;
+  margin-top: 150px;
+  text-align: center;
+}
+
+.input-field{
+  margin-bottom: 5px; 
+  padding: 8px;
+  background-color: rgb(40, 43, 46);
+  border-radius: 5px;
+  border: none;
+  width: 60%;
+  color: white !important;
+}
+
+.upload-btn {
+  display: inline-block;
+  background-color: #2f363e;
+  padding: 8px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  width: 50%;
+  box-sizing: border-box;
+  margin-top: 5px;
+  transition: 0.3s;
+  margin-bottom: 10px;
+}
+
+
+.upload-btn:hover {
+  background-color: #48525c;
+  text-decoration: none;
+}
+
+.file-upload {
+  
+  position: relative;
+  display: flex;
+  /* flex-direction: column; */
+  margin-bottom: 15px;
+  
+}
+
+
