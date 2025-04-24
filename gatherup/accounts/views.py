@@ -1,7 +1,9 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import  login
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 User = get_user_model()
 def login_view(request):
@@ -31,3 +33,13 @@ def signup_view(request):
         return redirect('home')
     
     return render(request, 'accounts/signup.html')
+
+
+@login_required(login_url='/accounts/login/')
+def profile_view(request):
+    return render(request, 'accounts/profile.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('/accounts/login/')
+

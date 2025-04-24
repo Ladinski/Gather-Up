@@ -26,7 +26,17 @@ border-radius: 8px;
     color: #fff; 
     transition: 0.3s;
 }
-
+.pic{
+  width: 30px !important;
+    border-radius: 50% !important;
+    margin-bottom: 15px !important;
+    margin-left: 20px !important; 
+    margin-top: 10px;
+    transition: 0.3s;
+}
+.pic:hover{
+  filter: brightness(65%);
+}
 .navbar-nav {
   justify-content: center;
   display: flex;
@@ -38,6 +48,7 @@ border-radius: 8px;
     color: #fff; 
     text-decoration: none;
     margin-left: 20px; 
+    transition: 0.3s;
 }
 
 .nav-link:hover {

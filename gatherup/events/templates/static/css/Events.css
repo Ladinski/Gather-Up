@@ -14,6 +14,17 @@ background-color: rgba(21, 16, 52, 0.9);
 color: #f8eded;
 border-radius: 8px;
 }
+.pic{
+  width: 30px !important;
+    border-radius: 50% !important;
+    margin-bottom: 15px !important;
+    margin-left: 20px !important; 
+    margin-top: 10px;
+    transition: 0.3s;
+}
+.pic:hover{
+  filter: brightness(65%);
+}
 
 .navbar{
   margin: 20px;
@@ -38,6 +49,7 @@ border-radius: 8px;
     color: #fff; 
     text-decoration: none;
     margin-left: 20px; 
+    transition: 0.3s;
 }
 
 .nav-link:hover {
