@@ -99,7 +99,8 @@
                   <!-- Like Button with Image Toggle -->
                   <div class="d-flex align-items-center">
                     <button class="btn btn-sm" data-event-id="${event.id}" id="likeButton-${event.id}" style="border: none; background: none; padding: 0;">
-                      <img src="${event.likes > 0 ? heartOnUrl : heartOffUrl}" alt="Like" style="width: 24px; height: 24px;">
+                      <img src="${event.is_liked ? heartOnUrl : heartOffUrl}" alt="Like" style="width: 24px; height: 24px;">
+
                     </button>
                     <span id="likeCount-${event.id}" style="font-size: 16px; margin-left: 8px;">${event.likes}</span>
                   </div>
@@ -114,27 +115,53 @@
           const likeButton = document.getElementById(`likeButton-${event.id}`);
           likeButton.addEventListener('click', function() {
             const likeCount = document.getElementById(`likeCount-${event.id}`);
-            const currentLikes = parseInt(likeCount.textContent);
-            const isLiked = likeButton.querySelector('img').src.includes(heartOnUrl);
+            let currentLikes = parseInt(likeCount.textContent, 10);
+            const imgSrc = likeButton.querySelector('img').getAttribute('src');
+            const isLiked = imgSrc === heartOnUrl;
             const updatedLikes = isLiked ? currentLikes - 1 : currentLikes + 1;
-            
+   
             likeCount.textContent = updatedLikes;
             likeButton.querySelector('img').src = isLiked ? heartOffUrl : heartOnUrl;
 
             // Send a PATCH request to the backend to update the like count
-            fetch(`/api/events/${event.id}/`, {
-              method: 'PATCH',
+            fetch(`/events/like/${event.id}/`, {
+              method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
-                
+                'X-CSRFToken': csrftoken,  // <-- Add CSRF token
               },
               body: JSON.stringify({ likes: updatedLikes }),
-            });
+            })
+            .then(response => response.json())
+            .then(data => {
+              // After server response, update the like count and heart image
+              likeCount.textContent = data.like_count;  // <-- Update displayed like count
+              likeButton.querySelector('img').src = isLiked ? heartOffUrl : heartOnUrl;
+            })
+            .catch(error => console.error('Error updating like count:', error));
           });
         });
       })
       .catch(error => console.error('Error fetching events:', error));
   });
+
+
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Check if this cookie string starts with the name we want
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getCookie('csrftoken');
 </script>
 
 
