@@ -14,8 +14,9 @@
         <h2>{{ request.user.username }}</h2>
         <p>{{ request.user.email }}</p>
         <a href="{% url 'password_change' %}" class="btn">Change Password</a>
-        <a href="{% url 'logout' %}" class="btn">Logout</a>
+        <a href="/my-events/" class="btn">My Events</a>
         <a href="/" class="btn">Back</a>
+        <a href="{% url 'logout' %}" class="btn out-btn" >Logout</a>
     </div>
 </body>
 </html>

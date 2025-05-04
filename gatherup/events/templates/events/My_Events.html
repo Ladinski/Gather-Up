@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Events</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/Events.css' %}">
+    <link rel="icon" href="{% static 'images/favicon-96x96.png' %}" sizes="96x96" type="image/png">
+
+    <!-- JS Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5 pt-5" id="event-container">
+        <h2 id="no-events-header" class="titlece" style="display:none;">No events</h3>
+        <h2 id="my-events-header" class="titlece" style="display:none;">My events</h3>
+        <div id="events-cards" class="row"></div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        fetch('/api/myevents/')
+            .then(response => response.json())
+            .then(data => {
+                const eventContainer = document.getElementById('events-cards');
+                const noEventsHeader = document.getElementById('no-events-header');
+                const myEventsHeader = document.getElementById('my-events-header');
+
+                if (data.length === 0) {
+                    noEventsHeader.style.display = 'block';
+                } else {
+                    myEventsHeader.style.display = 'block';
+                    data.forEach(event => {
+                        const eventCard = document.createElement('div');
+                        eventCard.classList.add('col-12', 'mb-4', 'contentDiv');
+                        eventCard.innerHTML = `
+                            <div class="card d-flex flex-md-row">
+                                <div class="col-md-4 p-0">
+                                    <img src="${event.image}" class="w-100 h-100" alt="Event Image" style="object-fit: cover; border-radius: 10px;">
+                                </div>
+                                <div class="col-12 col-md-8">
+                                    <div class="card-body">
+                                        <h4 class="card-title">${event.title}</h4>
+                                        <p class="card-text"><strong>Event Type:</strong> ${event.type}</p>
+                                        <p class="card-text">${event.description}</p>
+                                        <p class="card-text"><strong>Location:</strong> ${event.location}</p>
+                                        <p class="card-text"><strong>Date:</strong> ${new Date(event.date_time).toLocaleString()}</p>
+                                        <p class="card-text"><strong>Organizer:</strong> ${event.host_profile_name}</p>
+                                        <button class="btn btn-danger delete-btn" data-event-id="${event.id}">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        eventContainer.appendChild(eventCard);
+                    });
+                }
+            })
+            .catch(error => console.error('Error fetching events:', error));
+    });
+
+    document.addEventListener('click', function (event) {
+        if (event.target.classList.contains('delete-btn')) {
+            const eventId = event.target.getAttribute('data-event-id');
+
+            fetch(`/api/delete-event/${eventId}/`, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken')
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    const card = event.target.closest('.contentDiv');
+                    card.remove();
+                    if (document.querySelectorAll('.contentDiv').length === 0) {
+                        document.getElementById('no-events-header').style.display = 'block';
+                    }
+                } else {
+                    alert('Failed to delete event.');
+                }
+            });
+        }
+    });
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    </script>
+    <a href="/" class="btnce">Back</a>
+</body>
+</html>

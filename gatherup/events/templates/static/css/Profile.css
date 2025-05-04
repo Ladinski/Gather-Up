@@ -53,3 +53,11 @@ body {
     background-color: #48525c;
     text-decoration: none;
 }
+
+.out-btn{
+    background-color: rgb(209, 34, 34);
+}
+
+.out-btn:hover{
+    background-color: rgb(169, 20, 20);
+}

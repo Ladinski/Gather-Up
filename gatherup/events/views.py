@@ -83,3 +83,26 @@ def like_event(request, event_id):
     return JsonResponse({
         'like_count': like_count
     })
+
+
+
+class MyEvents(generics.ListCreateAPIView):
+    serializer_class = EventSerializer
+
+    def get_queryset(self):
+        # Filter events by the currently logged-in user
+        return Event.objects.filter(user=self.request.user)
+    
+
+class DeleteEventView(generics.DestroyAPIView):
+    queryset = Event.objects.all()
+    serializer_class = EventSerializer
+
+
+    def get_queryset(self):
+        # Only allow the user to delete their own events
+        return Event.objects.filter(user=self.request.user)
+    
+@login_required(login_url='/accounts/login/')
+def my_events(request):
+    return render(request, 'events/My_Events.html')
