@@ -49,13 +49,14 @@
 
   <!--content of the page-->
   
-
+<div class="container mt-5 mt-sm-5 mt-md-5 pt-5">
+  <p id="noResults" style="display: none; text-align: center; color: white; font-size: 25px;">No events match your search</p>
 
   <!--content of the page-->
-  <div class="container mt-5 mt-sm-5 mt-md-5 pt-5" id="event-container">
+  <div  id="event-container">
     <!-- Event cards will be dynamically loaded here -->
   </div>
-
+</div>
 <script>
   const heartOffUrl = "{% static 'images/heartOff.png' %}";
   const heartOnUrl = "{% static 'images/heartOn.png' %}";
@@ -206,24 +207,30 @@ const csrftoken = getCookie('csrftoken');
 </div>
 </div>
 <script>
+  
   $(document).ready(function() {
-    // On input in the search bar
-    $('#searchInput').on('input', function() {
-      var query = $(this).val().toLowerCase();  // Get the input text
+  $('#searchInput').on('input', function() {
+    const query = $(this).val().toLowerCase().trim();
+    let anyVisible = false;
 
-      // Loop through all divs with class 'contentDiv'
-      $('.contentDiv').each(function() {
-        var headerText = $(this).find('h4').text().toLowerCase();  // Get text of the header (h2)
-
-        // If the header text contains the search query, show the div; otherwise, hide it
-        if (headerText.includes(query)) {
-          $(this).show();  // Show div if header matches query
-        } else {
-          $(this).hide();  // Hide div if header doesn't match query
-        }
-      });
+    $('.contentDiv').each(function() {
+      const title = $(this).find('h4').text().toLowerCase();
+      if (title.includes(query)) {
+        $(this).show();
+        anyVisible = true;
+      } else {
+        $(this).hide();
+      }
     });
+
+    if (anyVisible) {
+      $('#noResults').hide();
+    } else {
+      $('#noResults').show();
+    }
   });
+});
+  
 </script>
 
 </body>

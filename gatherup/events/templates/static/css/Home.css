@@ -9,11 +9,7 @@ body {
     margin: 0;
 }
 
-.content-container p:hover {
-background-color: rgba(21, 16, 52, 0.9);
-color: #f8eded;
-border-radius: 8px;
-}
+
 
 .navbar{
   margin: 20px;
@@ -24,7 +20,7 @@ border-radius: 8px;
     padding: 30px; 
     margin-top: 100px;
     color: #fff; 
-    transition: 0.3s;
+    
 }
 .pic{
   width: 30px !important;
