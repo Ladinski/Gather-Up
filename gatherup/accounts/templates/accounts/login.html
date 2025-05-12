@@ -17,7 +17,7 @@
         <form method="POST">
             {% csrf_token %}
             
-            <!-- Display form fields -->
+            
             <input type="text" name="username" placeholder="Username" required class="input-field">
             <input type="password" name="password" placeholder="Password" required class="input-field">
             
@@ -30,7 +30,7 @@
     
 
     <script>
-        var loginFailed = "{{ login_failed|yesno:'true,false' }}"; // Convert to string
+        var loginFailed = "{{ login_failed|yesno:'true,false' }}"; 
         if (loginFailed === "true") {
         alert("Incorrect email or password.");
         }

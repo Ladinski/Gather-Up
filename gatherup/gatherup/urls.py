@@ -5,11 +5,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('events.urls')),  # Your events app URLs
-    path('auth/', include('djoser.urls')),  # Djoser routes for authentication
-    path('auth/', include('djoser.urls.authtoken')),
-    path('accounts/', include('accounts.urls')),  # Your accounts app URLs (including login)
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('', include('events.urls')),  
+    path('accounts/', include('accounts.urls')),  
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

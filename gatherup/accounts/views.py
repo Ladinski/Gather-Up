@@ -21,14 +21,14 @@ def login_view(request):
 def signup_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
-        email = request.POST.get('email')  # Get the email input
+        email = request.POST.get('email')  
         password = request.POST.get('password')
         
         if User.objects.filter(username=username).exists():
             error = "Username already exists"
             return render(request, 'accounts/signup.html', {'error': error})
         
-        user = User.objects.create_user(username=username, email=email, password=password)  # Save email to User model
+        user = User.objects.create_user(username=username, email=email, password=password) 
         login(request, user)
         return redirect('home')
     

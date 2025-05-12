@@ -34,7 +34,7 @@ class Event(models.Model):
     description = models.TextField()
     location = models.CharField(max_length=255)
     host_profile_name = models.CharField(max_length=30)
-    date_time = models.DateTimeField()  # New field for event date and time
+    date_time = models.DateTimeField()  
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=1)
     likes = models.PositiveIntegerField(default=0)
     def delete(self, *args, **kwargs):

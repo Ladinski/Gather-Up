@@ -4,7 +4,7 @@ from .models import CustomUser
 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ['username', 'email', 'is_staff', 'is_active']  # Removed 'date_joined'
+    list_display = ['username', 'email', 'is_staff', 'is_active']  
     list_filter = ['is_staff', 'is_active']
     search_fields = ['username', 'email']
     ordering = ['username']

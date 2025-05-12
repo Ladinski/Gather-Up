@@ -14,7 +14,7 @@ body{
 }
 
 .loginCard{
-    background: rgba(33, 32, 32, 0.9); /* optional: adds a dark transparent background */
+    background: rgba(33, 32, 32, 0.9); 
     padding: 40px 0px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);

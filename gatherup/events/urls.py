@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('events/', views.events_page, name='events-page'),  # new
+    path('events/', views.events_page, name='events-page'),  
     path('upload/', views.upload_event, name='upload_event'),
     path('my-events/', views.my_events, name='my-events'),
     path('api/events/', views.EventListView.as_view(), name='event-list'),
