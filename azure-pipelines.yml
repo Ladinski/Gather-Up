@@ -30,7 +30,7 @@ steps:
   displayName: 'Install prerequisites'
 
 - script: |
-    python gatherup/manage.py test
+    python manage.py test
   displayName: 'Run tests'
 
 - task: PublishTestResults@2
